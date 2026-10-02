@@ -1,0 +1,26 @@
+### Отримати всі слова
+GET http://localhost:3000/api/words
+
+### Отримати слово за id
+GET http://localhost:3000/api/words/6ac008d91821a1db93fd1e71
+
+### Створити нове слово
+POST http://localhost:3000/api/words
+Content-Type: application/json
+
+{
+  "word": "apple",
+  "translation": "яблуко"
+}
+
+### Оновити слово
+PUT http://localhost:3000/api/words/6ac008d91821a1db93fd1e71
+Content-Type: application/json
+
+{
+  "word": "apple",
+  "translation": "яблуко (оновлено)"
+}
+
+### Видалити слово
+DELETE http://localhost:3000/api/words/6ac008d91821a1db93fd1e71
