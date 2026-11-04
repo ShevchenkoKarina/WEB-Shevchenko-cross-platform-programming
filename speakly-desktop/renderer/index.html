@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <title>Speakly New</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="header">
+    <h1>Speakly</h1>
+    <p>Твій персональний помічник у вивченні іноземних мов</p>
+</header>
+
+<main class="container">
+    <section class="card">
+        <h2>Додати слово для вивчення</h2>
+        <input type="text" id="wordInput" class="word-input" placeholder="Введіть слово" />
+        <button id="addWordButton" class="button">Додати слово</button>
+        <p id="message" class="message"></p>
+    </section>
+
+    <section class="card">
+        <h2>Словник слів</h2>
+        <ul id="wordsList" class="words-list"></ul>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
