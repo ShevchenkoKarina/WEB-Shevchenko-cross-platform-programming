@@ -1,0 +1,15 @@
+{
+  "name": "@speakly/core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Спільна платформонезалежна логіка застосунку Speakly",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "speakly-monorepo-desktop",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Десктопний клієнт Speakly (Electron): спільне ядро + файловий адаптер",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@speakly/core": "*"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}

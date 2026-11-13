@@ -1,0 +1,14 @@
+{
+  "name": "speakly-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Веб-клієнт Speakly: спільне ядро + адаптер localStorage",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@speakly/core": "*"
+  }
+}

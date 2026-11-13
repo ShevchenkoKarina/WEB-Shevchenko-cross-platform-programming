@@ -1,0 +1,15 @@
+{
+  "name": "speakly-monorepo",
+  "version": "1.0.0",
+  "description": "Speakly: застосунок для вивчення іноземних мов (спільне ядро + веб + десктоп)",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "start:web": "npm start -w speakly-web",
+    "start:desktop": "npm start -w speakly-monorepo-desktop"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
