@@ -16,42 +16,6 @@
 <img width="988" height="675" alt="image" src="https://github.com/user-attachments/assets/0e717f56-5d18-4878-b3fc-64dc8fd4a2a2" />
 
 
-- Клієнти (веб, мобільний, десктоп) працюють на своїх платформах.
-- Веб- і десктопний клієнти імпортують єдине ядро [`@speakly/core`](packages/core).
-- Ядро не знає, де зберігаються дані: це вирішує платформний адаптер.
-- REST і GraphQL API розроблено окремими проєктами (ЛР №2–3).
-
----
-
-## Сильні моменти проєкту
-
-### 1. Спільне ядро без дублювання логіки
-Усю платформонезалежну логіку (перевірка слова, створення, сортування, пошук, `WordsService`) винесено до пакета [`packages/core`](packages/core). Зміна `MAX_WORD_LENGTH` з 50 на 10 в одному файлі ядра одразу змінила поведінку обох клієнтів без жодної правки в їхньому коді.
-
-### 2. Платформні адаптери збереження
-Ядро описує лише інтерфейс `load()` / `save(words)`. Веб використовує `localStorage` ([`packages/web`](packages/web)), десктоп записує слова у файл `words.json` ([`packages/desktop`](packages/desktop)), а у тестах працює `MemoryStorageAdapter`. Адаптер передається в `WordsService` через конструктор (Dependency Injection).
-
-### 3. Безпечна архітектура Electron
-У [`packages/desktop`](packages/desktop) інтерфейс не має прямого доступу до Node.js: увімкнено `contextIsolation`, вимкнено `nodeIntegration`, а preload-скрипт через `contextBridge` відкриває лише потрібні функції `window.wordsAPI`. Обмін даними між процесами реалізовано через IPC.
-
-### 4. Автоматичні тести
-Для ядра, веб- та десктопного клієнтів написано **36 тестів** на вбудованому `node:test` (ядро — 19, десктоп — 10, веб — 7). Усі проходять без жодних додаткових бібліотек.
-
----
-
-## Технологічний стек і компетентності
-
-### Стек технологій
-
-| Рівень архітектури | Технології | Де реалізовано | Лабораторні |
-|---|---|---|---|
-| **1. Платформи** | Браузер (WebView), Android / iOS (Expo Go), Windows / macOS / Linux (Electron) | [`packages/web`](packages/web), [`vocab-words`](vocab-words), [`packages/desktop`](packages/desktop) | №1, №4, №5, №6 |
-| **2. Клієнтські технології** | React, Hooks, Vite, Tailwind CSS, HTML / CSS / JavaScript, React Native, Expo, Electron | [`packages/web`](packages/web), [`vocab-words`](vocab-words), [`packages/desktop`](packages/desktop) | №4, №5, №6, №7-8 |
-| **3. Спільний код** | npm workspaces, `@speakly/core`, `WordsService`, `LocalStorageAdapter`, `FileStorageAdapter`, `node:test` | [`packages/core`](packages/core) | №7-8 |
-| **4. Сервер і API** | Node.js, Express 5 (REST), Apollo Server (GraphQL), JWT, bcryptjs, Electron IPC | [`speakly-server`](speakly-server), [`graphql-auth-lab3`](graphql-auth-lab3), [`packages/desktop`](packages/desktop) | №2, №3, №6 |
-| **5. База даних** | MongoDB Atlas, Mongoose, `localStorage`, JSON-файл, дані в пам'яті сервера | [`speakly-server`](speakly-server), [`packages/web`](packages/web), [`packages/desktop`](packages/desktop) | №2, №3, №4, №6 |
-
-> Монорепозиторій об'єднує **веб- та десктопний клієнти** зі спільним ядром. Мобільний застосунок, REST API та GraphQL API розроблено як окремі проєкти Speakly, вони не підключені безпосередньо до `@speakly/core`.
 
 ### Історія проєкту
 
@@ -77,39 +41,36 @@
 
 ---
 
-## Структура монорепозиторію
+## Структура репозиторію
+
+Репозиторій містить усі лабораторні роботи з дисципліни. 
 
 ```text
-speakly-monorepo/
-├── packages/
-│   ├── core/       # Спільна бізнес-логіка (@speakly/core)
-│   ├── web/        # Веб-клієнт (localStorage)
-│   └── desktop/    # Десктопний клієнт Electron (words.json, IPC)
-├── package.json
-└── README.md
+WEB-Shevchenko-cross-platform-programming/
+├── cross-platform-lab-1/     # ЛР №1: налаштування середовища, порівняльний аналіз підходів
+├── speakly-server/           # ЛР №2: REST API (Node.js, Express, MongoDB)
+├── graphql-auth-lab3/        # ЛР №3: GraphQL API (Apollo Server, JWT)
+├── speakly-lessons/          # ЛР №4: веб-версія SPA (React, Vite, Tailwind CSS)
+├── vocab-words/              # ЛР №5: мобільний застосунок (React Native, Expo)
+├── speakly-desktop/          # ЛР №6: десктопний застосунок (Electron)
+└── speakly-monorepo/         # ЛР №7-8: монорепозиторій зі спільним ядром
+    ├── packages/
+    │   ├── core/             # Спільна бізнес-логіка (@speakly/core)
+    │   ├── web/              # Веб-клієнт (localStorage)
+    │   └── desktop/          # Десктопний клієнт Electron (words.json, IPC)
+    ├── package.json
+    └── README.md             # Цей файл
 ```
 
-Пакети `web` і `desktop` використовують спільну логіку пакета `core`, але мають власні інтерфейси та способи збереження даних.
-
----
-
-## Запуск проєкту
-
-Потрібні встановлені [Node.js](https://nodejs.org/) та npm.
-
-```bash
-# 1. Встановлення залежностей (у корені монорепозиторію)
-npm install
-
-# 2. Запуск веб-клієнта
-npm run start:web
-
-# 3. Запуск десктопного застосунку
-npm run start:desktop
-
-# 4. Запуск автоматичних тестів усіх пакетів
-npm test
-```
+| Лабораторна | Тека | Що реалізовано |
+|---|---|---|
+| №1 | [`cross-platform-lab-1`](../cross-platform-lab-1) | Налаштування середовища, порівняльний аналіз підходів |
+| №2 | [`speakly-server`](../speakly-server) | REST API з CRUD і MongoDB Atlas |
+| №3 | [`graphql-auth-lab3`](../graphql-auth-lab3) | GraphQL API з JWT-автентифікацією |
+| №4 | [`speakly-lessons`](../speakly-lessons) | Веб-версія SPA на React, Vite і Tailwind CSS |
+| №5 | [`vocab-words`](../vocab-words) | Мобільний застосунок на React Native |
+| №6 | [`speakly-desktop`](../speakly-desktop) | Десктопний застосунок на Electron |
+| №7-8 | [`packages/core`](packages/core), [`packages/web`](packages/web), [`packages/desktop`](packages/desktop) | Спільне ядро та два клієнти |
 
 ---
 
