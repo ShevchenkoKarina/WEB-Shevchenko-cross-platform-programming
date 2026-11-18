@@ -38,13 +38,15 @@ WEB-Shevchenko-cross-platform-programming/
 
 | Лабораторна | Тека | Що реалізовано |
 |---|---|---|
-| №1 | [`cross-platform-lab-2`](../cross-platform-lab-2) | Вебсторінка Speakly, налаштування середовища |
-| №2 | [`speakly-server`](../speakly-server) | REST API з CRUD і MongoDB Atlas |
-| №3 | [`graphql-auth-lab3`](../graphql-auth-lab3) | GraphQL API з JWT-автентифікацією |
-| №4 | [`speakly-lessons-spa`](../speakly-lessons-spa) | Веб-версія SPA на React, Vite і Tailwind CSS |
-| №5 | [`vocab-words`](../vocab-words) | Мобільний застосунок на React Native |
-| №6 | [`speakly-desktop`](../speakly-desktop) | Десктопний застосунок на Electron |
-| №7-8 | [`speakly-monorepo`](../speakly-monorepo) | Монорепозиторій: спільне ядро, веб- і десктопний клієнти з тестами |
+| №1 | [`cross-platform-lab-2`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/cross-platform-lab-2) | Вебсторінка Speakly, налаштування середовища |
+| №2 | [`speakly-server`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/speakly-server) | REST API з CRUD і MongoDB Atlas |
+| №3 | [`graphql-auth-lab3`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/graphql-auth-lab3) | GraphQL API з JWT-автентифікацією |
+| №4 | [`speakly-lessons-spa`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/speakly-lessons-spa) | Веб-версія SPA на React, Vite і Tailwind CSS |
+| №5 | [`vocab-words`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/vocab-words) | Мобільний застосунок на React Native |
+| №6 | [`speakly-desktop`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/speakly-desktop) | Десктопний застосунок на Electron |
+| №7-8 | [`speakly-monorepo`](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/tree/main/speakly-monorepo) | Монорепозиторій: спільне ядро, веб- і десктопний клієнти з тестами |
+
+Докладний опис технологічного стеку за рівнями архітектури наведено у [README монорепозиторію](https://github.com/ShevchenkoKarina/WEB-Shevchenko-cross-platform-programming/blob/main/speakly-monorepo/README.md).
 
 ---
 
